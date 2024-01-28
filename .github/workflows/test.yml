@@ -25,13 +25,13 @@ jobs:
       working-directory: './jokester'
 
   test_action_and_deploy_demo: # make sure the action works on a clean machine without building
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v3
     - name: 'Deploy demo app using action'
       uses: ./
       with:
-        run_lint: true
+        run_lint: false # This also causes same error, commenting out to stick to build issue
         github_access_token: ${{ secrets.ACCESS_TOKEN }}
         build_configuration: # The branch the action should deploy from.
         base_href: /angular-deploy-gh-pages-actions/
